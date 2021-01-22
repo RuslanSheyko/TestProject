@@ -1,4 +1,5 @@
 .idea/
+.m2/
 target/
 out/
 *.log
