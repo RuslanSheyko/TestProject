@@ -17,15 +17,14 @@ public class InitialDriver extends Options {
      * Driver (profile) name for subsequent selection of settings for initialization
      */
     private static final String driverName;
-
-    static {
-        driverName = DRIVER_NAME;
-    }
-
     /**
      * ThreadLocal object for video driver synchronization (for future multithreading)
      */
     private static final ThreadLocal<InitialDriver> driverThread = new ThreadLocal<>();
+
+    static {
+        driverName = DRIVER_NAME;
+    }
 
     /**
      * Web Driver Object
@@ -61,7 +60,7 @@ public class InitialDriver extends Options {
      * initializes the browser instance
      * CHROME_WIN10 - an instance of the remote driver for Chrome on Windows obtained from the Selenium Grid hub
      * FIREFOX_WIN10 - an instance of the remote driver for Firefox on Windows obtained from the Selenium Grid hub
-     *
+     * <p>
      * CHROME-LOCAL - a local driver instance for Chrome obtained from src / main / resources / chromedriver.exe
      * default - an instance of the local driver for Firefox obtained from src / main / resources / geckodriver.exe
      */

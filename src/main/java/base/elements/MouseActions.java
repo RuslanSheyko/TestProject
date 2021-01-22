@@ -19,6 +19,7 @@ public class MouseActions extends Element {
 
     /**
      * Mouse hover over an element
+     *
      * @param element - element object
      */
     public void mouseHover(WebElement element) {
@@ -28,6 +29,7 @@ public class MouseActions extends Element {
 
     /**
      * Hovering the mouse over the element over the object and clicking
+     *
      * @param element - the object of the element
      */
     public void mouseHoverAndClick(WebElement element) {

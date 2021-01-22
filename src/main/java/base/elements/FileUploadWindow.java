@@ -12,7 +12,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import static base.waiters.JSWaiters.sleep;
 
 /**
  * Wrapper class for file uploading
@@ -22,7 +21,7 @@ public class FileUploadWindow extends Element {
     /**
      * *! IMPORTANT! * Works only if the element is <input type = 'file'>
      *
-     * @param locator - element locator by tap, to which the file is loaded
+     * @param locator    - element locator by tap, to which the file is loaded
      * @param pathToFile - path to file
      */
     public void uploadFileFullPath(By locator, String pathToFile) {
@@ -31,9 +30,7 @@ public class FileUploadWindow extends Element {
             LocalFileDetector detector = new LocalFileDetector();
             File file = detector.getLocalFile(pathToFile);
             ((RemoteWebElement) addFile).setFileDetector(detector);
-            sleep(1);
             addFile.sendKeys(file.getAbsolutePath());
-            sleep(2);
             attachXlsx(pathToFile);
         } catch (Exception e) {
             log.error("Exception while file uploading" + e.getMessage());

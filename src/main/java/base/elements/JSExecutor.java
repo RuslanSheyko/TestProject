@@ -21,9 +21,8 @@ public class JSExecutor extends Element {
     }
 
     /**
-     * Скролл страницы вниз до момента, когда веб-элемент будет видимым по локатору
-     *
-     * @param locator - локатор веб-элемента
+     *  Scroll to your locator
+     * @param locator
      */
     public void scrollToNecessaryElement(By locator) {
         scrollToNecessaryElement(waitUntilVisible(locator));

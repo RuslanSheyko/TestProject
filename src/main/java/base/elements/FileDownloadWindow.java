@@ -25,10 +25,6 @@ import static base.util.BaseConstants.LOADER_TIME_WAIT_FOR_DOWNLOAD;
 @Slf4j
 public class FileDownloadWindow extends Element {
     /**
-     * Instance driver to wait for file download
-     */
-    private final WebDriver driver = InitialDriver.getInstance().getDriver();
-    /**
      * Field containing the path to the project in the system
      */
     public static final String PROJECT_DIR_PATH = System.getProperty("user.dir");
@@ -40,19 +36,10 @@ public class FileDownloadWindow extends Element {
      * Field containing the path to the folder where files are downloaded inside the target folder
      */
     public static final String PROJECT_DOWNLOAD_DIRECTORY = PROJECT_BUILD_DIRECTORY + File.separator + "downloaded";
-
     /**
-     * Method for downloading a file to a folder along the PROJECT_DOWNLOAD_DIRECTORY path
-     *
-     * @param locator - element locator, by tap on which the file download window will pop up
+     * Instance driver to wait for file download
      */
-    public void downloadFile(By locator) {
-        createDownloadFolder();
-        new CustomWaiters().waitForLoaderNotToBePresent();
-        new Button().click(locator);
-        new CustomWaiters().waitForLoaderForFileDownload();
-        waitForFileToBeDownloaded();
-    }
+    private final WebDriver driver = InitialDriver.getInstance().getDriver();
 
     /**
      * Method to customize Chrome profile download file
@@ -86,6 +73,17 @@ public class FileDownloadWindow extends Element {
         profile.setPreference("browser.download.manager.showAlertOnComplete", false);
         profile.setPreference("browser.download.manager.closeWhenDone", true);
         return profile;
+    }
+
+    /**
+     * Method for downloading a file to a folder along the PROJECT_DOWNLOAD_DIRECTORY path
+     *
+     * @param locator - element locator, by tap on which the file download window will pop up
+     */
+    public void downloadFile(By locator) {
+        createDownloadFolder();
+        new Button().click(locator);
+        waitForFileToBeDownloaded();
     }
 
     /**

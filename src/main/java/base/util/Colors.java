@@ -13,12 +13,21 @@ public enum Colors {
     GREY(new ColorRGBA(128, 128, 128, 1), "Серый"),
     LIGHT_BLUE(new ColorRGBA(122, 191, 224, 1), "Голубой"),
     WHITE(new ColorRGBA(255, 255, 255, 1), "Белый"),
-    DARK_GREY(new ColorRGBA(118,131,167,1),"Темный");
+    DARK_GREY(new ColorRGBA(118, 131, 167, 1), "Темный");
+
+    /**
+     * Field containing RGBA object
+     */
+    private ColorRGBA rgba;
+    /**
+     * A field containing a human-readable name
+     */
+    private String russianName;
 
     /**
      * Constructor
      *
-     * @param rgba - the object class containing the RGBA color
+     * @param rgba    - the object class containing the RGBA color
      * @param rusName - a clear name for the color to be displayed in the report
      */
     Colors(ColorRGBA rgba, String rusName) {
@@ -36,15 +45,6 @@ public enum Colors {
             return rgba.toRGB();
         } else return rgba.toRGBA();
     }
-
-    /**
-     * Field containing RGBA object
-     */
-    private ColorRGBA rgba;
-    /**
-     * A field containing a human-readable name
-     */
-    private String russianName;
 
     /**
      * Method that returns a friendly name for the report
@@ -68,10 +68,10 @@ public enum Colors {
         /**
          * Class constructor
          *
-         * @param red - red
+         * @param red   - red
          * @param green - green
-         * @param blue - blue
-         * @param a - transparency
+         * @param blue  - blue
+         * @param a     - transparency
          */
         ColorRGBA(int red, int green, int blue, int a) {
             this.red = red;

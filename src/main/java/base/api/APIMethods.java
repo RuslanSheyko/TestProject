@@ -22,41 +22,6 @@ public class APIMethods {
     }
 
     /**
-     * Header builder
-     *
-     * @param headers - header object
-     * @return returns the request object
-     */
-    public Invocation.Builder buildRequest(HeadersBuilder headers) {
-        Client client = ClientBuilder.newClient();
-        if (headers.has("headers")) {
-            return client
-                    .target(rootURL).path(headers.getEndpoint())
-                    .request(headers.getRequest())
-                    .headers(headers.getHeadersMultiMap())
-                    .accept(headers.getAccept());
-        } else
-            return client
-                    .target(rootURL).path(headers.getEndpoint())
-                    .request(headers.getRequest())
-                    .accept(headers.getAccept());
-    }
-
-    /**
-     * Method for POST request
-     *
-     * @param headers - header object
-     * @param body    - request body
-     * @return - response object
-     */
-    public Response post(HeadersBuilder headers, JSONObject body) {
-        Response res = buildRequest(headers).post(Entity.json(body.toString()));
-        res.bufferEntity();
-        logs(headers, body, res);
-        return res;
-    }
-
-    /**
      * API request logging
      *
      * @param headers  - header
@@ -97,5 +62,40 @@ public class APIMethods {
     public static String createSubString(String fullString, String start, String end) {
         return fullString.substring(fullString.indexOf(start) + start.length(),
                 fullString.indexOf(end));
+    }
+
+    /**
+     * Header builder
+     *
+     * @param headers - header object
+     * @return returns the request object
+     */
+    public Invocation.Builder buildRequest(HeadersBuilder headers) {
+        Client client = ClientBuilder.newClient();
+        if (headers.has("headers")) {
+            return client
+                    .target(rootURL).path(headers.getEndpoint())
+                    .request(headers.getRequest())
+                    .headers(headers.getHeadersMultiMap())
+                    .accept(headers.getAccept());
+        } else
+            return client
+                    .target(rootURL).path(headers.getEndpoint())
+                    .request(headers.getRequest())
+                    .accept(headers.getAccept());
+    }
+
+    /**
+     * Method for POST request
+     *
+     * @param headers - header object
+     * @param body    - request body
+     * @return - response object
+     */
+    public Response post(HeadersBuilder headers, JSONObject body) {
+        Response res = buildRequest(headers).post(Entity.json(body.toString()));
+        res.bufferEntity();
+        logs(headers, body, res);
+        return res;
     }
 }

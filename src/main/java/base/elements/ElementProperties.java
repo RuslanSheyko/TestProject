@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static base.util.BaseConstants.TIME_OUT;
-import static base.waiters.JSWaiters.sleep;
 
 /**
  * Handler class for methods associated with properties of web elements
@@ -21,7 +20,7 @@ public class ElementProperties extends Element {
     /**
      * Getting the attribute of the web element found by the locator
      *
-     * @param locator - locator
+     * @param locator   - locator
      * @param attribute - attribute
      * @return string with attribute value
      */
@@ -32,7 +31,7 @@ public class ElementProperties extends Element {
     /**
      * Getting the attribute of the web element found by the locator
      *
-     * @param element - element
+     * @param element   - element
      * @param attribute - attribute
      * @return string with attribute value
      */
@@ -43,7 +42,7 @@ public class ElementProperties extends Element {
     /**
      * Getting the CSS property found by the locator
      *
-     * @param locator - locator
+     * @param locator  - locator
      * @param cssValue - CSS property
      * @return CSS property value string
      */
@@ -62,7 +61,7 @@ public class ElementProperties extends Element {
     }
 
     /**
-
+     *
      */
     public String getTextExistedElement(By locator) {
         return waitUntilExist(locator).getText();
@@ -128,7 +127,6 @@ public class ElementProperties extends Element {
      * @return - true - the element exists, false - the element does not exist
      */
     public boolean isElementPresent(By locator) {
-        sleep(1);
         try {
             getWebElementWithoutWaitAndCondition(locator);
             return true;
@@ -140,7 +138,7 @@ public class ElementProperties extends Element {
     /**
      * Getting the value of the state of the presence of a web element attribute
      *
-     * @param locator - locator
+     * @param locator   - locator
      * @param attribute - attribute
      * @return - true - the attribute exists, false - the attribute does not exist
      */
@@ -161,7 +159,7 @@ public class ElementProperties extends Element {
      * Getting the value of the state of the presence of a web element attribute
      * Method with the condition of waiting for the element to have an attribute
      *
-     * @param locator - locator
+     * @param locator   - locator
      * @param attribute - attribute
      * @return - true - the attribute exists, false - the attribute does not exist
      */
@@ -192,7 +190,7 @@ public class ElementProperties extends Element {
      * Get the value of the state of the absence of a web element attribute
      * Method with the condition of waiting for the element to have no attribute
      *
-     * @param locator - locator
+     * @param locator   - locator
      * @param attribute - attribute
      * @return - true - the attribute is absent, false - the attribute is present
      */

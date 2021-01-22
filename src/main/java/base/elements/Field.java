@@ -31,7 +31,7 @@ public class Field extends Element {
      * Method of writing text in the element field by locator after waiting for the element to exist
      *
      * @param locator - element object
-     * @param text - text
+     * @param text    - text
      */
     public void typeTextOnExist(By locator, String text) {
         waitUntilExist(locator).clear();
@@ -42,7 +42,7 @@ public class Field extends Element {
      * The method of writing text in the element field by locator after waiting for the element to be clickable
      *
      * @param locator - element object
-     * @param text - text
+     * @param text    - text
      */
     public void typeText(By locator, String text) {
         waitUntilClickable(locator).clear();

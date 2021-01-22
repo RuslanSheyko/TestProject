@@ -9,6 +9,7 @@ public class RandomUtils {
 
     /**
      * Randomize a string of a certain length from letters 'a' - 'z'
+     *
      * @param length - length of the string
      * @return - received string
      */

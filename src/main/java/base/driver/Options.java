@@ -1,10 +1,7 @@
 package base.driver;
 
-import org.openqa.selenium.Platform;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.remote.BrowserType;
-import org.openqa.selenium.remote.CapabilityType;
 
 import static base.elements.FileDownloadWindow.getFileDownloadOptions;
 import static base.elements.FileDownloadWindow.getGeckoDownloadProfile;

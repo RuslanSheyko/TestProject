@@ -29,6 +29,7 @@ public class Button extends Element {
 
     /**
      * Check that the button is clickable (does not contain the "disabled" attribute)
+     *
      * @param locator - button locator
      * @return - true - the button is enabled \ false the button is disabled
      */

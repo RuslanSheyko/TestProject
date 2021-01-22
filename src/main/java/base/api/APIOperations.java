@@ -2,11 +2,8 @@ package base.api;
 
 import io.qameta.allure.Step;
 import org.json.JSONObject;
-import org.testng.annotations.Test;
 
 import javax.ws.rs.core.Response;
-
-import static org.testng.Assert.assertEquals;
 
 /**
  * Class for prepared API requests for use in UI testing

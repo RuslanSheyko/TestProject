@@ -29,7 +29,7 @@ public class PropertiesReader {
      */
     private static final String APPLICATION_PROPERTIES = "src/main/resources/application.properties";
     /**
-     * Конфигурационный файл для конфига браузера
+     * Configuration file for browser config
      */
     private static final String BROWSER_PROPERTIES = "target/classes/browser.properties";
 
