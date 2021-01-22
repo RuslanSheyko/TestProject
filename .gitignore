@@ -1,9 +1,9 @@
-.allure
-.idea
-.git
-target
-*.iml
-build
-allure-results
-downloadFiles
+.idea/
+target/
+out/
 *.log
+allure-results
+*.allure
+src/resources/ScreenShot/*
+test-output/*
+src/resources/config.properties
