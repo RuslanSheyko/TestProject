@@ -1,5 +1,4 @@
 .idea/
-.m2/
 target/
 out/
 *.log
@@ -8,3 +7,4 @@ allure-results
 src/resources/ScreenShot/*
 test-output/*
 src/resources/config.properties
+/.m2/
