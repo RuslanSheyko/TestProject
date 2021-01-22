@@ -1,0 +1,68 @@
+include:
+  - project: 'images/ci'
+    file: 'autotest/allure.yml'
+
+
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
+  MAVEN_CLI_OPTS: "-T 4 --batch-mode -s .m2/settings.xml"
+
+
+.cache:
+  cache:
+    key: ${CI_PROJECT_ID}
+    paths:
+      - .m2/repository
+
+stages:
+  - test
+  - allure
+
+
+selenium:firefox:
+  extends:
+    - .allure_common
+    - .cache
+  stage: test
+  script:
+    - mvn clean test -Pfirefox-remote
+  artifacts:
+    paths:
+      - /builds/crmb2b-qa/selenium-tests/target
+    expire_in: 5 day
+
+
+
+selenium:chrome:
+  extends:
+    - .allure_common
+    - .cache
+  stage: test
+  script:
+    - sleep 300
+    - mvn clean test -Pchrome-remote
+  artifacts:
+    paths:
+      - /builds/crmb2b-qa/selenium-tests/target
+    expire_in: 5 day
+
+
+allure:firefox:
+  needs: ["selenium:firefox"]
+  dependencies:
+    - selenium:firefox
+  extends:
+    - .allure_deploy_server
+  variables:
+    ALLURE_PROJECT_NAME: crmb2b-firefox
+    ALLURE_TARGET: /builds/crmb2b-qa/selenium-tests/target
+
+allure:chrome:
+  needs: ["selenium:chrome"]
+  dependencies:
+    - selenium:chrome
+  extends:
+    - .allure_deploy_server
+  variables:
+    ALLURE_PROJECT_NAME: crmb2b-chrome
+    ALLURE_TARGET: /builds/crmb2b-qa/selenium-tests/target

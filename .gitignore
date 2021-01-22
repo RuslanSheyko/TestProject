@@ -1,0 +1,9 @@
+.allure
+.idea
+.git
+target
+*.iml
+build
+allure-results
+downloadFiles
+*.log
