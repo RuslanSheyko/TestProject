@@ -14,6 +14,7 @@
             </activation>
             <properties>
                 <browser.name>CHROME_LOCAL</browser.name>
+                <browser.useWebdriverManager>true</browser.useWebdriverManager>
             </properties>
         </profile>
         <profile>
@@ -51,6 +52,7 @@
         <jersey-client.version>2.29.1</jersey-client.version>
         <jersey-hk2.version>2.26</jersey-hk2.version>
         <apache.commons.io>2.8.0</apache.commons.io>
+        <webdrivermanager>5.3.1</webdrivermanager>
     </properties>
 
     <dependencies>
@@ -59,7 +61,11 @@
             <artifactId>json</artifactId>
             <version>${json.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>${webdrivermanager}</version>
+        </dependency>
         <!-- For Excel parsing -->
         <dependency>
             <groupId>org.apache.poi</groupId>

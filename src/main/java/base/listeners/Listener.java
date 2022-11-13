@@ -6,10 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.testng.IInvokedMethodListener;
-import org.testng.ISuiteListener;
-import org.testng.ITestListener;
-import org.testng.ITestResult;
+import org.testng.*;
 
 /**
  * Listener for handling events and different test steps in TestNG
@@ -62,11 +59,41 @@ public class Listener implements ITestListener, ISuiteListener, IInvokedMethodLi
         InitialDriver.getInstance().destroy();
     }
 
+    @Override
+    public void onStart(ITestContext iTestContext) {
+
+    }
+
+    @Override
+    public void onFinish(ITestContext iTestContext) {
+
+    }
+
     /**
      * Taking a screenshot and attaching it to AllureReport
      */
     @Attachment(value = "Screenshot", type = "image/png")
     public byte[] takeScreenshot(WebDriver driver) {
         return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+    }
+
+    @Override
+    public void beforeInvocation(IInvokedMethod iInvokedMethod, ITestResult iTestResult) {
+
+    }
+
+    @Override
+    public void afterInvocation(IInvokedMethod iInvokedMethod, ITestResult iTestResult) {
+
+    }
+
+    @Override
+    public void onStart(ISuite iSuite) {
+
+    }
+
+    @Override
+    public void onFinish(ISuite iSuite) {
+
     }
 }

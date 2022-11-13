@@ -8,6 +8,7 @@ public class BaseConstants {
      * Driver name for option selection during initialization
      */
     public static final String DRIVER_NAME = new PropertiesReader().browserProperties().getProperty("browser.driver");
+    public static final boolean useWebdriverManager= Boolean.parseBoolean(new PropertiesReader().browserProperties().getProperty("webdriverManager"));
 
     /**
      * App URL

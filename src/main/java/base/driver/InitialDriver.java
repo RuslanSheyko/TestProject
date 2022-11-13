@@ -1,5 +1,6 @@
 package base.driver;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -7,6 +8,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import static base.util.BaseConstants.DRIVER_NAME;
+import static base.util.BaseConstants.useWebdriverManager;
 
 /**
  * A class for initializing and getting a webdriver - an object for controlling the browser
@@ -69,19 +71,23 @@ public class InitialDriver extends Options {
             case "CHROME_LOCAL": {
                 System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
                 log.info("Creation driver instance: Chrome local...");
+                if (useWebdriverManager)
+                    WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver(chromeOptions());
                 break;
             }
             case "FIREFOX_LOCAL": {
                 System.setProperty("webdriver.gecko.driver", "src/main/resources/geckodriver.exe");
                 log.info("Creation driver instance: Firefox local...");
+                if (useWebdriverManager)
+                    WebDriverManager.firefoxdriver().setup();
                 driver = new FirefoxDriver(firefoxOptions());
-                driver.manage().window().maximize();
             }
             default: {
                 System.setProperty("webdriver.gecko.driver", "src/main/resources/geckodriver.exe");
                 log.info("Creation driver instance: Firefox local...");
-                driver = new FirefoxDriver(firefoxOptions());
+                if (useWebdriverManager)
+                    driver = new FirefoxDriver(firefoxOptions());
                 driver.manage().window().maximize();
             }
         }
